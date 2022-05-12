@@ -3,7 +3,7 @@ from pydantic import BaseModel
 class PredictionRequest(BaseModel):
 	query_string: str
 
-@app.post("my_endpoint"):
+@app.post("my_endpoint")
 def my_endpooint(request: PredictionRequest):
 	sentiment_model = pipeline("Sentiment-Analysis")
 
