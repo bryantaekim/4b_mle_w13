@@ -1,13 +1,21 @@
 from transformers import pipeline
+from fastapi import FastAPI
 from pydantic import BaseModel
+
+app = FastAPI()
+
 class PredictionRequest(BaseModel):
 	query_string: str
 
-@app.post("my_endpoint")
-def my_endpooint(request: PredictionRequest):
-	sentiment_model = pipeline("Sentiment-Analysis")
+@app.get('/health')
+def health():
+	return 'Service is online.'
 
-	request = PredictionRequest(sentiment_query_sentence = "I love you")
-	sentiment = sentiment_model(sentiment_query_sentence)
-	print(f"Sentiment test:" {sentiment_query_sentence} == {sentiment})
+@app.post("/my-endpoint")
+def my_endpooint(request: PredictionRequest):
+	sentiment_model = pipeline("sentiment-analysis")
+
+	sentiment = sentiment_model(request.query_string)
+	print(f"Sentiment test: {request.query_string} == {sentiment}")
+	return {"Sentiment" : sentiment}
 	
