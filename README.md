@@ -14,18 +14,18 @@
 4. Click on "Try it out"
 5. Enter your own query in the Requested Body,
 
-{
-  "query_string": "I love you"
-}
+      {
+        "query_string": "I love you"
+      }
 
-6.Hit "Execute"
-7.You will have a sentiment result as below,
+6. Hit "Execute"
+7. You will have a sentiment result as below,
 
-{
-  "Sentiment": [
     {
-      "label": "POSITIVE",
-      "score": 0.9998656511306763
+      "Sentiment": [
+        {
+          "label": "POSITIVE",
+          "score": 0.9998656511306763
+        }
+      ]
     }
-  ]
-}
